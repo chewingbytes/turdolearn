@@ -36,27 +36,27 @@ export function HeroSection() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            <div className="flex flex-col items-center gap-2 rounded-lg dark:bg-card bg-[#AADBFF] p-4 shadow-2xl">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Users className="h-6 w-6 text-primary" />
+            <div className="flex flex-col items-center gap-2 rounded-lg bg-card p-4 shadow-2xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-chart-3/10">
+                <Users className="h-6 w-6 text-muted-foreground" />
               </div>
               <h3 className="font-semibold">Smart Matching</h3>
               <p className="text-sm text-muted-foreground">
                 AI-powered partner recommendations
               </p>
             </div>
-            <div className="flex flex-col items-center gap-2 rounded-lg dark:bg-card bg-[#AADBFF] p-4 shadow-2xl">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-                <Calendar className="h-6 w-6 text-accent" />
+            <div className="flex flex-col items-center gap-2 rounded-lg bg-card p-4 shadow-2xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-chart-3/10">
+                <Calendar className="h-6 w-6 text-muted-foreground" />
               </div>
               <h3 className="font-semibold">Session Scheduling</h3>
               <p className="text-sm text-muted-foreground">
                 Coordinate study times effortlessly
               </p>
             </div>
-            <div className="flex flex-col items-center gap-2 rounded-lg dark:bg-card bg-[#AADBFF] p-4 shadow-2xl">
+            <div className="flex flex-col items-center gap-2 rounded-lg bg-card p-4 shadow-2xl">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-chart-3/10">
-                <CheckSquare className="h-6 w-6 text-chart-3" />
+                <CheckSquare className="h-6 w-6 text-muted-foreground" />
               </div>
               <h3 className="font-semibold">Shared Tasks</h3>
               <p className="text-sm text-muted-foreground">
