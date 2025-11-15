@@ -1,85 +1,86 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { GroupList } from "@/components/group-list"
-import { TaskList } from "@/components/task-list"
-import { AddTaskModal } from "@/components/add-task-modal"
-import { SessionScheduler } from "@/components/session-scheduler"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Users } from 'lucide-react'
-import type { StudyGroup, GroupTask } from "@/lib/types"
-import groupsData from "@/lib/data/groups.json"
-import studentsData from "@/lib/data/students.json"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { GroupList } from "@/components/group-list";
+import { TaskList } from "@/components/task-list";
+import { AddTaskModal } from "@/components/add-task-modal";
+import { SessionScheduler } from "@/components/session-scheduler";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Users } from "lucide-react";
+import type { StudyGroup, GroupTask } from "@/lib/types";
+import groupsData from "@/lib/data/groups.json";
+import studentsData from "@/lib/data/students.json";
+import { toast } from "sonner";
 
 export default function GroupsPage() {
-  const { toast } = useToast()
-  const [groups, setGroups] = useState<StudyGroup[]>(groupsData as StudyGroup[])
-  const [selectedGroupId, setSelectedGroupId] = useState<string | null>(null)
-  const [addTaskModalOpen, setAddTaskModalOpen] = useState(false)
+  const [groups, setGroups] = useState<StudyGroup[]>(
+    groupsData as StudyGroup[]
+  );
+  const [selectedGroupId, setSelectedGroupId] = useState<string | null>(null);
+  const [addTaskModalOpen, setAddTaskModalOpen] = useState(false);
 
-  const selectedGroup = groups.find(g => g.id === selectedGroupId)
+  const selectedGroup = groups.find((g) => g.id === selectedGroupId);
 
   const handleToggleTask = (taskId: string) => {
-    setGroups(prevGroups =>
-      prevGroups.map(group => ({
+    setGroups((prevGroups) =>
+      prevGroups.map((group) => ({
         ...group,
-        tasks: group.tasks.map(task =>
+        tasks: group.tasks.map((task) =>
           task.id === taskId ? { ...task, completed: !task.completed } : task
-        )
+        ),
       }))
-    )
-  }
+    );
+  };
 
   const handleAddTask = (title: string, dueDate: string) => {
-    if (!selectedGroup) return
+    if (!selectedGroup) return;
 
     const newTask: GroupTask = {
       id: `t${Date.now()}`,
       groupId: selectedGroup.id,
       title,
       completed: false,
-      dueDate: dueDate || undefined
-    }
+      dueDate: dueDate || undefined,
+    };
 
-    setGroups(prevGroups =>
-      prevGroups.map(group =>
+    setGroups((prevGroups) =>
+      prevGroups.map((group) =>
         group.id === selectedGroup.id
           ? { ...group, tasks: [...group.tasks, newTask] }
           : group
       )
-    )
+    );
 
-    toast({
-      title: "Task added!",
-      description: "New task has been added to the group.",
-    })
-  }
+    toast("New task has been added to the group.");
+  };
 
-  const handleScheduleSession = (date: string, time: string, location: string) => {
-    if (!selectedGroup) return
+  const handleScheduleSession = (
+    date: string,
+    time: string,
+    location: string
+  ) => {
+    if (!selectedGroup) return;
 
-    setGroups(prevGroups =>
-      prevGroups.map(group =>
+    setGroups((prevGroups) =>
+      prevGroups.map((group) =>
         group.id === selectedGroup.id
           ? { ...group, nextSession: { date, time, location } }
           : group
       )
-    )
+    );
 
-    toast({
-      title: "Session scheduled!",
-      description: "All group members will be notified.",
-    })
-  }
+    toast("Session scheduled! All group members will be notified.");
+  };
 
   if (selectedGroup) {
-    const members = studentsData.filter(s => selectedGroup.members.includes(s.id))
+    const members = studentsData.filter((s) =>
+      selectedGroup.members.includes(s.id)
+    );
 
     return (
       <div className="min-h-screen flex flex-col">
@@ -97,7 +98,9 @@ export default function GroupsPage() {
                 Back to Groups
               </Button>
               <h1 className="mb-2 text-3xl font-bold">{selectedGroup.name}</h1>
-              <p className="text-muted-foreground">{selectedGroup.description}</p>
+              <p className="text-muted-foreground">
+                {selectedGroup.description}
+              </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {selectedGroup.modules.map((module) => (
                   <Badge key={module} variant="secondary">
@@ -129,14 +132,22 @@ export default function GroupsPage() {
                           className="flex items-center gap-3 rounded-lg border border-border p-3"
                         >
                           <Avatar className="h-10 w-10">
-                            <AvatarImage src={member.avatar || "/placeholder.svg"} alt={member.name} />
+                            <AvatarImage
+                              src={member.avatar || "/placeholder.svg"}
+                              alt={member.name}
+                            />
                             <AvatarFallback>
-                              {member.name.split(' ').map(n => n[0]).join('')}
+                              {member.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
                             </AvatarFallback>
                           </Avatar>
                           <div className="flex-1">
                             <div className="font-medium">{member.name}</div>
-                            <div className="text-xs text-muted-foreground">{member.email}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {member.email}
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -162,7 +173,7 @@ export default function GroupsPage() {
           onSubmit={handleAddTask}
         />
       </div>
-    )
+    );
   }
 
   return (
@@ -179,13 +190,10 @@ export default function GroupsPage() {
         </div>
 
         <div className="container mx-auto px-4 py-8">
-          <GroupList
-            groups={groups}
-            onSelectGroup={setSelectedGroupId}
-          />
+          <GroupList groups={groups} onSelectGroup={setSelectedGroupId} />
         </div>
       </main>
       <Footer />
     </div>
-  )
+  );
 }

@@ -1,83 +1,83 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { SearchBar } from "@/components/search-bar"
-import { FilterPanel } from "@/components/filter-panel"
-import { PartnerCard } from "@/components/partner-card"
-import { MatchModal } from "@/components/match-modal"
-import { Pagination } from "@/components/pagination"
-import type { Student } from "@/lib/types"
-import studentsData from "@/lib/data/students.json"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { SearchBar } from "@/components/search-bar";
+import { FilterPanel } from "@/components/filter-panel";
+import { PartnerCard } from "@/components/partner-card";
+import { MatchModal } from "@/components/match-modal";
+import { Pagination } from "@/components/pagination";
+import type { Student } from "@/lib/types";
+import studentsData from "@/lib/data/students.json";
+import { toast } from "sonner";
 
-const ITEMS_PER_PAGE = 6
+const ITEMS_PER_PAGE = 6;
 
 export default function PartnersPage() {
-  const { toast } = useToast()
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedModules, setSelectedModules] = useState<string[]>([])
-  const [selectedAvailability, setSelectedAvailability] = useState<string[]>([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [selectedPartner, setSelectedPartner] = useState<Student | null>(null)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedModules, setSelectedModules] = useState<string[]>([]);
+  const [selectedAvailability, setSelectedAvailability] = useState<string[]>(
+    []
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedPartner, setSelectedPartner] = useState<Student | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   // Filter logic
   const filteredPartners = (studentsData as Student[]).filter((student) => {
-    const matchesSearch = searchQuery === "" || 
+    const matchesSearch =
+      searchQuery === "" ||
       student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.modules.some(m => m.toLowerCase().includes(searchQuery.toLowerCase()))
+      student.modules.some((m) =>
+        m.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
-    const matchesModules = selectedModules.length === 0 ||
-      student.modules.some(m => selectedModules.includes(m))
+    const matchesModules =
+      selectedModules.length === 0 ||
+      student.modules.some((m) => selectedModules.includes(m));
 
-    return matchesSearch && matchesModules
-  })
+    return matchesSearch && matchesModules;
+  });
 
   // Pagination
-  const totalPages = Math.ceil(filteredPartners.length / ITEMS_PER_PAGE)
+  const totalPages = Math.ceil(filteredPartners.length / ITEMS_PER_PAGE);
   const paginatedPartners = filteredPartners.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
-  )
+  );
 
   const handleConnect = (partnerId: string) => {
-    const partner = studentsData.find(s => s.id === partnerId) as Student
-    setSelectedPartner(partner)
-    setModalOpen(true)
-  }
+    const partner = studentsData.find((s) => s.id === partnerId) as Student;
+    setSelectedPartner(partner);
+    setModalOpen(true);
+  };
 
   const handleSubmitRequest = (message: string) => {
-    toast({
-      title: "Match request sent!",
-      description: `Your request has been sent to ${selectedPartner?.name}.`,
-    })
-  }
+    toast(`Your match request has been sent to ${selectedPartner?.name}.`);
+  };
 
   const handleModuleToggle = (module: string) => {
-    setSelectedModules(prev =>
+    setSelectedModules((prev) =>
       prev.includes(module)
-        ? prev.filter(m => m !== module)
+        ? prev.filter((m) => m !== module)
         : [...prev, module]
-    )
-    setCurrentPage(1)
-  }
+    );
+    setCurrentPage(1);
+  };
 
   const handleAvailabilityToggle = (time: string) => {
-    setSelectedAvailability(prev =>
-      prev.includes(time)
-        ? prev.filter(t => t !== time)
-        : [...prev, time]
-    )
-  }
+    setSelectedAvailability((prev) =>
+      prev.includes(time) ? prev.filter((t) => t !== time) : [...prev, time]
+    );
+  };
 
   const handleReset = () => {
-    setSelectedModules([])
-    setSelectedAvailability([])
-    setSearchQuery("")
-    setCurrentPage(1)
-  }
+    setSelectedModules([]);
+    setSelectedAvailability([]);
+    setSearchQuery("");
+    setCurrentPage(1);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -115,12 +115,15 @@ export default function PartnersPage() {
             <div className="lg:col-span-3">
               {paginatedPartners.length === 0 ? (
                 <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border bg-background py-12">
-                  <p className="text-muted-foreground">No partners found matching your criteria</p>
+                  <p className="text-muted-foreground">
+                    No partners found matching your criteria
+                  </p>
                 </div>
               ) : (
                 <>
                   <div className="mb-4 text-sm text-muted-foreground">
-                    Showing {paginatedPartners.length} of {filteredPartners.length} partners
+                    Showing {paginatedPartners.length} of{" "}
+                    {filteredPartners.length} partners
                   </div>
                   <div className="grid gap-6 md:grid-cols-2">
                     {paginatedPartners.map((partner) => (
@@ -155,5 +158,5 @@ export default function PartnersPage() {
         onSubmit={handleSubmitRequest}
       />
     </div>
-  )
+  );
 }
