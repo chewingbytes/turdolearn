@@ -11,7 +11,7 @@ export function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                 <BookOpen className="h-5 w-5 text-primary-foreground" />
               </div>
-              <span className="font-bold">StudyBuddy</span>
+              <span className="font-bold">Turdolearn</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Connect, collaborate, and succeed together.
@@ -47,7 +47,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-          <p>&copy; 2025 StudyBuddy. All rights reserved.</p>
+          <p>&copy; 2025 TurdoLearn. All rights reserved.</p>
         </div>
       </div>
     </footer>

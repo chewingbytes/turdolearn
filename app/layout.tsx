@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -9,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "StudyBuddy - Find Your Perfect Study Partner",
+  title: "Turdolearn - Find Your Perfect Study Partner",
   description:
     "Connect with students, join study groups, and achieve academic success together",
   generator: "v0.app",
@@ -38,12 +39,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Toaster />
-        <Analytics />
-      </body>
-    </html>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`font-sans antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+            <Analytics />
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }

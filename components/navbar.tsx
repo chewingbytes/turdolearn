@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { BookOpen, Menu, User } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { BookOpen, Menu, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ModeToggle } from "./mode-toggle";
 
 export function Navbar() {
   return (
@@ -19,18 +20,27 @@ export function Navbar() {
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
             <BookOpen className="h-6 w-6 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold">StudyBuddy</span>
+          <span className="text-xl font-bold">TurdoLearn</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-6 md:flex">
-          <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
+        <div className="hidden items-center gap-14 md:flex">
+          <Link
+            href="/"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             Dashboard
           </Link>
-          <Link href="/partners" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link
+            href="/partners"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             Find Partners
           </Link>
-          <Link href="/groups" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link
+            href="/groups"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             My Groups
           </Link>
         </div>
@@ -70,8 +80,10 @@ export function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
+
+          <ModeToggle />
         </div>
       </div>
     </nav>
-  )
+  );
 }
