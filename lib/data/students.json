@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Chen",
+    "email": "sarah.chen@university.edu",
+    "avatar": "/placeholder.svg?height=100&width=100",
+    "modules": ["Computer Science 101", "Data Structures", "Web Development"],
+    "interests": ["Frontend Development", "UX Design", "Mobile Apps"],
+    "availability": ["Mon 2-5pm", "Wed 10am-1pm", "Fri 3-6pm"],
+    "learningStyle": "Visual learner",
+    "rating": 4.8,
+    "bio": "Passionate about web development and always eager to collaborate on projects!"
+  },
+  {
+    "id": "2",
+    "name": "Marcus Johnson",
+    "email": "marcus.j@university.edu",
+    "avatar": "/placeholder.svg?height=100&width=100",
+    "modules": ["Data Structures", "Algorithms", "Database Systems"],
+    "interests": ["Backend Development", "System Design", "Cloud Computing"],
+    "availability": ["Tue 1-4pm", "Thu 9am-12pm", "Sat 10am-2pm"],
+    "learningStyle": "Hands-on learner",
+    "rating": 4.9,
+    "bio": "Database enthusiast looking for study partners to tackle complex algorithm problems."
+  },
+  {
+    "id": "3",
+    "name": "Emma Rodriguez",
+    "email": "emma.r@university.edu",
+    "avatar": "/placeholder.svg?height=100&width=100",
+    "modules": ["Web Development", "Computer Networks", "Software Engineering"],
+    "interests": ["Full Stack Development", "DevOps", "Agile Methodologies"],
+    "availability": ["Mon 9am-12pm", "Wed 2-5pm", "Thu 1-4pm"],
+    "learningStyle": "Collaborative learner",
+    "rating": 4.7,
+    "bio": "Love working in teams and sharing knowledge. Let's build something amazing together!"
+  },
+  {
+    "id": "4",
+    "name": "David Kim",
+    "email": "david.kim@university.edu",
+    "avatar": "/placeholder.svg?height=100&width=100",
+    "modules": ["Computer Science 101", "Algorithms", "Machine Learning"],
+    "interests": ["AI", "Data Science", "Python Programming"],
+    "availability": ["Tue 10am-1pm", "Thu 2-5pm", "Sat 1-4pm"],
+    "learningStyle": "Independent learner",
+    "rating": 4.6,
+    "bio": "Interested in AI and machine learning. Looking for partners to work on ML projects."
+  },
+  {
+    "id": "5",
+    "name": "Priya Patel",
+    "email": "priya.p@university.edu",
+    "avatar": "/placeholder.svg?height=100&width=100",
+    "modules": ["Data Structures", "Web Development", "Mobile Development"],
+    "interests": ["React Native", "iOS Development", "UI/UX"],
+    "availability": ["Mon 1-4pm", "Wed 9am-12pm", "Fri 10am-1pm"],
+    "learningStyle": "Visual learner",
+    "rating": 4.9,
+    "bio": "Mobile app developer with a keen eye for design. Always up for brainstorming sessions!"
+  },
+  {
+    "id": "6",
+    "name": "Alex Turner",
+    "email": "alex.t@university.edu",
+    "avatar": "/placeholder.svg?height=100&width=100",
+    "modules": ["Computer Networks", "Database Systems", "Cybersecurity"],
+    "interests": ["Network Security", "Ethical Hacking", "Cloud Architecture"],
+    "availability": ["Tue 2-5pm", "Thu 10am-1pm", "Sat 9am-12pm"],
+    "learningStyle": "Problem-solving focused",
+    "rating": 4.5,
+    "bio": "Security enthusiast looking to form study groups focused on practical network challenges."
+  }
+]

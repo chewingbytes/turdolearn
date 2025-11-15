@@ -1,0 +1,84 @@
+[
+  {
+    "id": "g1",
+    "name": "Data Structures Masters",
+    "description": "Weekly sessions focused on mastering algorithms and data structures",
+    "members": ["1", "2", "5"],
+    "modules": ["Data Structures", "Algorithms"],
+    "nextSession": {
+      "date": "2025-11-20",
+      "time": "3:00 PM",
+      "location": "Library Room 205"
+    },
+    "tasks": [
+      {
+        "id": "t1",
+        "groupId": "g1",
+        "title": "Complete Binary Tree assignment",
+        "completed": true,
+        "assignedTo": "1",
+        "dueDate": "2025-11-18"
+      },
+      {
+        "id": "t2",
+        "groupId": "g1",
+        "title": "Review sorting algorithms",
+        "completed": false,
+        "dueDate": "2025-11-21"
+      },
+      {
+        "id": "t3",
+        "groupId": "g1",
+        "title": "Prepare graph traversal presentation",
+        "completed": false,
+        "assignedTo": "5",
+        "dueDate": "2025-11-25"
+      }
+    ]
+  },
+  {
+    "id": "g2",
+    "name": "Web Dev Wizards",
+    "description": "Building modern web applications together",
+    "members": ["1", "3", "5"],
+    "modules": ["Web Development", "Software Engineering"],
+    "nextSession": {
+      "date": "2025-11-22",
+      "time": "10:00 AM",
+      "location": "Computer Lab B"
+    },
+    "tasks": [
+      {
+        "id": "t4",
+        "groupId": "g2",
+        "title": "Deploy group project to Vercel",
+        "completed": false,
+        "assignedTo": "3",
+        "dueDate": "2025-11-23"
+      },
+      {
+        "id": "t5",
+        "groupId": "g2",
+        "title": "Review React hooks",
+        "completed": true,
+        "dueDate": "2025-11-17"
+      }
+    ]
+  },
+  {
+    "id": "g3",
+    "name": "CS 101 Study Circle",
+    "description": "Supporting each other through intro computer science",
+    "members": ["1", "4"],
+    "modules": ["Computer Science 101"],
+    "tasks": [
+      {
+        "id": "t6",
+        "groupId": "g3",
+        "title": "Practice coding problems",
+        "completed": false,
+        "dueDate": "2025-11-19"
+      }
+    ]
+  }
+]
